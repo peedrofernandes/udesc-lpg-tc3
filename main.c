@@ -4,33 +4,32 @@
 /* 
  to-do:
 	make functions do what they meant to;
+*/
 
-*/ 
+// Address, Phone, Birthday = New types that will be used in Person type.
 
-// structing address to be allocated inside Person
-struct Address {
-	char rua[50], comp[50], bairro[50], cidade[50], estado[50], pais[50];
-	int numero, cep;
-};
-
-// structing phone to be allocated inside Person
-struct Phone {
-	int ddd, number;
-};
-
-// structing birthday to be allocated inside Person
-struct Birthday {
-	int day, month, year;
-};
-
-// structing Person
 typedef struct {
-	char firstName[50], lastName[50];
-	char email[100];
+  char street[50], comp[50], district[50], city[50], state[50], country[50];
+  int number zipCode;
+} Address;
+
+typedef struct {
+	int ddd, number;
+} Phone;
+
+typedef struct {
+	int day, month, year;
+} Birthday;
+
+// Type Person:
+typedef struct {
+  char firstName[50];
+  char lastName[50];
+  char email[100];
 	int id;
-	struct Birthday birthday;
-	struct Address address;
-	struct Phone phone;
+	Birthday birthday;
+	Address address;
+	Phone phone;
 } Person;
 
 // insertPerson receives as argument, the array of people to be inserted to, as first argument,
@@ -141,7 +140,9 @@ int main(void) {
 		printf("Buscar aniversariantes do mes: (4) \n");
 		printf("Buscar aniversariantes do dia: (5) \n");
 		printf("Encerrar programa: (0) \n");
-		scanf("%d", &option);
+
+    printf("Sua opcao: ");
+    scanf("%d", &option);
 
 		switch (option) {
 			// shut the program down
