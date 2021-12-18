@@ -1,5 +1,5 @@
 #include <stdio.h>
-// #include <string.h>
+#include <string.h>
 
 /* 
  to-do:
@@ -7,6 +7,7 @@
 */
 
 // Address, Phone, Birthday = New types that will be used in Person type.
+
 
 typedef struct {
   char street[50], comp[50], district[50], city[50], state[50], country[50];
@@ -32,60 +33,124 @@ typedef struct {
 	Phone phone;
 } Person;
 
-// insertPerson receives as argument, the array of people to be inserted to, as first argument,
-// and the peopleCounter, called 'c'. it will add one and return the counter as second argument
-int insertPerson(Person people[], int c) {
-	// system("cls || clear");
+
+void insertPerson(Person *people, int c) {
+	system("cls");
+
+	if (c > 1)
+		people = realloc(people, c * sizeof(Person));
+	// Reallocating memory because of the insertion!
+
 
 	printf("Para inserir um novo registro, passe as seguintes informacoes: \n\n");
 
-	printf("Nome: ");
-	scanf("%s", people[c].firstName);
-	printf("Sobrenome: ");
-	scanf("%s", people[c].lastName);
-	printf("e-mail: ");
-	scanf("%s", people[c].email);
 
-	printf("\nSobre o endereco \n");
+	printf("Primeiro nome: ");
+	scanf("%s", &people[c - 1].firstName);
+
+	printf("Sobrenome: ");
+	fflush(stdin);
+	fgets(people[c - 1].lastName, 50, stdin);
+
+	printf("e-mail: ");
+	scanf("%s", &people[c - 1].email);
+
+
+	printf("\nSobre o endereco:\n");
+
 
 	printf("Rua: ");
-	scanf("%s", people[c].address.street);
-	printf("Numero: ");
-	scanf("%d", &people[c].address.number);
-	printf("Complemento: ");
-	scanf("%s", people[c].address.comp);
-	printf("Bairro: ");
-	scanf("%s", people[c].address.district);
-	printf("CEP: ");
-	scanf("%d", &people[c].address.zipCode);
-	printf("Cidade: ");
-	scanf("%s", people[c].address.city);
-	printf("Estado: ");
-	scanf("%s", people[c].address.state);
-	printf("Pais: ");
-	scanf("%s", people[c].address.country);
+	fflush(stdin);
+	fgets(people[c - 1].address.street, 50, stdin);
 
-	printf("\nAgora sobre o telefone \n");
+	printf("Numero: ");
+	scanf("%d", &people[c - 1].address.number);
+
+	printf("Complemento: ");
+	fflush(stdin);
+	fgets(people[c - 1].address.comp, 50, stdin);
+
+	printf("Bairro: ");
+	fflush(stdin);
+	fgets(people[c - 1].address.district, 50, stdin);
+
+	printf("CEP: ");
+	scanf("%d", &people[c - 1].address.zipCode);
+
+	printf("Cidade: ");
+	fflush(stdin);
+	fgets(people[c - 1].address.city, 50, stdin);
+
+	printf("Estado: ");
+	fflush(stdin);
+	fgets(people[c - 1].address.state, 50, stdin);
+
+	printf("Pais: ");
+	fflush(stdin);
+	fgets(people[c - 1].address.country, 50, stdin);
+
+
+	printf("\nAgora sobre o telefone:\n");
+
 
 	printf("DDD: ");
-	scanf("%d", &people[c].phone.ddd);
+	scanf("%d", &people[c - 1].phone.ddd);
+
 	printf("Numero: ");
-	scanf("%d", &people[c].phone.number);
+	scanf("%d", &people[c - 1].phone.number);
+
 
 	printf("\nFinalmente, sobre o aniversario\n");
 
+
 	printf("Dia: ");
-	scanf("%d", &people[c].birthday.day);
+	scanf("%d", &people[c - 1].birthday.day);
+
 	printf("Mes: ");
-	scanf("%d", &people[c].birthday.month);
+	scanf("%d", &people[c - 1].birthday.month);
+
 	printf("Ano: ");
-	scanf("%d", &people[c].birthday.year);
+	scanf("%d", &people[c - 1].birthday.year);
+
+	system("cls");
 
 	printf("\nRegistro criado com sucesso!\n");
-	
-	c++; // increase one to peopleCounter
+}
 
-	return c; // returns counter updated
+void printList(Person *list, int listSize) {
+	int i;
+
+	system("cls");
+
+	printf("\n-----------------------\n");
+	printf("TODOS OS REGISTROS\n");
+	printf("-----------------------\n\n");
+
+	for (i = 0; i < listSize; i++) {
+		printf("Index %d\n\n", i);
+
+		printf("Informacao base\n\n");
+		printf("Nome: %s\n", list[i].firstName);
+		printf("Sobrenome: %s\n", list[i].lastName);
+		printf("Email: %s\n\n", list[i].email);
+
+		printf("Endereco\n\n");
+
+		printf("Rua: %s\n", list[i].address.street);
+		printf("Numero: %d\n", list[i].address.number);
+		printf("Complemento: %s\n", list[i].address.comp);
+		printf("Bairro: %s\n", list[i].address.district);
+		printf("CEP: %s\n", list[i].address.zipCode);
+		printf("Cidade: %s\n", list[i].address.city);
+		printf("Estado: %s\n", list[i].address.state);
+		printf("Pais: %s\n\n", list[i].address.country);
+
+		printf("Telefone\n\n");
+
+		printf("Numero: (%d) - %d\n\n", list[i].phone.ddd, list[i].phone.number);
+	}
+
+	printf("Fim do registro.\n");
 }
 
 // removePerson receives as argument the peopleArray as first argument, 
@@ -134,38 +199,45 @@ void searchBdaysByDay(/* day, month */) {
 }
 
 int main(void) {
-	int option = 1;
-  Person *registry;
+	int option;
+	int listSize = 0;
+  Person *list = malloc(sizeof(Person));
 
-  while (option) {
+	system("cls");
+
+  do {
 		printf("\n-----------------------\n");
-		printf(" MENU PRINCIPAL AGENDA\n");
+		printf("MENU PRINCIPAL AGENDA\n");
 		printf("-----------------------\n\n");
 		printf("QUAL OPCAO DESEJA SEGUIR: \n\n");
 		
-		printf("Inserir um novo registro: (1) \n");
-		printf("Remover um registro: (2) \n");
-		printf("Buscar registro por nome: (3) \n");
-		printf("Buscar aniversariantes do mes: (4) \n");
-		printf("Buscar aniversariantes do dia: (5) \n");
-		printf("Encerrar programa: (0) \n");
+		printf("[1] Inserir um novo registro:\n");
+		printf("[2] Mostrar todos os registros\n");
+		printf("[3] Remover um registro\n");
+		printf("[4] Buscar registro por nome\n");
+		printf("[5] Buscar aniversariantes do mes\n");
+		printf("[6] Buscar aniversariantes do dia\n");
+		printf("[7] Encerrar programa\n");
 
     printf("Sua opcao: ");
     scanf("%d", &option);
 
 		switch (option) {
-			// shut the program down
 			case 0:
 				printf("Encerrando, ate a proxima!");
 				break;
 
-			// call the function insertPerson to create one registry
 			case 1:
-				// insertPerson(Person people[], int c);
+				listSize++;
+				insertPerson(list, listSize);
+				break;
+
+			case 2:
+				printList(list, listSize);
 				break;
 
 			// call the function removePerson to remove one registry passing unique id as argument
-			case 2:
+			case 3:
 				// system("cls || clear");
 				printf("Insira o nome da pessoa a ter seu registro removido: ");
 				scanf("");
@@ -179,7 +251,7 @@ int main(void) {
 
 			// call the function searchPersonByName to list all persons
 			// with the name passed as argument
-			case 3:
+			case 4:
 				// system("cls || clear");
 				printf("Insira o nome da pessoa que deseja buscar mais informacoes: ");
 				scanf("");
@@ -191,7 +263,7 @@ int main(void) {
 				}
 				break;
 
-			case 4:
+			case 5:
 				// system("cls || clear");
 				printf("Insira o mes que deseja buscar por aniversariantes: ");
 				scanf("");
@@ -208,7 +280,7 @@ int main(void) {
 				}
 				break;
 
-			case 5:
+			case 6:
 				// system("cls || clear");
 				printf("Insira a data que deseja buscar por aniversariantes\n");
 				printf("Dia: ");
@@ -227,11 +299,14 @@ int main(void) {
 					break;
 				}
 				break;
+			case 7:
 
 			default:
 				printf("Valor invalido, tente novamente!\n");
 		}
-	}
+	} while (option != 0);
+
+	free(list);
 
   return 0;
 }
