@@ -1,10 +1,28 @@
 # UDESC-LPG-TC3
 C-based program, which is a complementary work of the Programming Language subject in UDESC
 
-• Fazer um programa para simular uma agenda. Para cada pessoa devese ter os seguintes dados: nome, e-mail, endereço (contendo campos
-para rua, numero, complemento, bairro, cep, cidade, estado, país),
-telefone (contendo campo para DDD e número) e data de aniversário
-(contendo campo para dia, mês, ano). O programa principal deve
+• Fazer um programa para simular uma agenda. Para cada pessoa deve-se ter os seguintes dados:
+
+- Nome; 
+- E-mail; 
+- Endereço, contendo campos para: 
+    - rua;
+    - numero; 
+    - complemento; 
+    - bairro; 
+    - cep; 
+    - cidade; 
+    - estado;
+    - país;
+- Telefone, contendo campo para: 
+    - DDD; 
+    - número;
+- Data de aniversário, contendo campos para:
+    - Dia;
+    - Mês;
+    - Ano.
+    
+O programa principal deve
 oferecer as seguintes opções:
 
     a) Busca dados de uma pessoa: faça uma função que receba o
