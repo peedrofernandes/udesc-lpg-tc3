@@ -6,16 +6,17 @@ para rua, numero, complemento, bairro, cep, cidade, estado, país),
 telefone (contendo campo para DDD e número) e data de aniversário
 (contendo campo para dia, mês, ano). O programa principal deve
 oferecer as seguintes opções:
+
     a) Busca dados de uma pessoa: faça uma função que receba o
-  nome de uma pessoa e procure todas as pessoas que contenham o
-  nome informado. Exiba o nome, e-mail e telefone de cada pessoa.
+    nome de uma pessoa e procure todas as pessoas que contenham o
+    nome informado. Exiba o nome, e-mail e telefone de cada pessoa.
   
     b) Aniversariantes do mês: faça uma função que imprima o nome
-  de todos os aniversariantes de um mês (parâmetro da função).
+    de todos os aniversariantes de um mês (parâmetro da função).
   
     c) Aniversariantes do dia: faça uma função que imprima o nome de
-  todos os aniversariantes de um dia (e mês passados como
-  parâmetro para a função).
+    todos os aniversariantes de um dia (e mês passados como
+    parâmetro para a função).
 
 • Utilizando o programa da agenda, altere o mesmo para
 permitir que o usuário possa também inserir outros registros
