@@ -4,77 +4,84 @@
 /* 
  to-do:
 	make functions do what they meant to;
+*/
 
-*/ 
+// Address, Phone, Birthday = New types that will be used in Person type.
 
-// structing address to be allocated inside Person
-struct Address {
-	char rua[50], comp[50], bairro[50], cidade[50], estado[50], pais[50];
-	int numero, cep;
-};
-
-// structing phone to be allocated inside Person
-struct Phone {
-	int ddd, number;
-};
-
-// structing birthday to be allocated inside Person
-struct Birthday {
-	int day, month, year;
-};
-
-// structing Person
 typedef struct {
-	char firstName[50], lastName[50];
-	char email[100];
+  char street[50], comp[50], district[50], city[50], state[50], country[50];
+  int zipCode, number;
+} Address;
+
+typedef struct {
+	int ddd, number;
+} Phone;
+
+typedef struct {
+	int day, month, year;
+} Birthday;
+
+// Type Person:
+typedef struct {
+  char firstName[50];
+  char lastName[50];
+  char email[100];
 	int id;
-	struct Birthday birthday;
-	struct Address address;
-	struct Phone phone;
+	Birthday birthday;
+	Address address;
+	Phone phone;
 } Person;
 
 // insertPerson receives as argument, the array of people to be inserted to, as first argument,
 // and the peopleCounter, called 'c'. it will add one and return the counter as second argument
 int insertPerson(Person people[], int c) {
 	// system("cls || clear");
- 
+
 	printf("Para inserir um novo registro, passe as seguintes informacoes: \n\n");
+
 	printf("Nome: ");
 	scanf("%s", people[c].firstName);
 	printf("Sobrenome: ");
 	scanf("%s", people[c].lastName);
 	printf("e-mail: ");
 	scanf("%s", people[c].email);
+
 	printf("\nSobre o endereco \n");
+
 	printf("Rua: ");
-	scanf("%s", people[c].address.rua);
+	scanf("%s", people[c].address.street);
 	printf("Numero: ");
-	scanf("%d", &people[c].address.numero);
+	scanf("%d", &people[c].address.number);
 	printf("Complemento: ");
 	scanf("%s", people[c].address.comp);
 	printf("Bairro: ");
-	scanf("%s", people[c].address.bairro);
+	scanf("%s", people[c].address.district);
 	printf("CEP: ");
-	scanf("%d", &people[c].address.cep);
+	scanf("%d", &people[c].address.zipCode);
 	printf("Cidade: ");
-	scanf("%s", people[c].address.cidade);
+	scanf("%s", people[c].address.city);
 	printf("Estado: ");
-	scanf("%s", people[c].address.estado);
+	scanf("%s", people[c].address.state);
 	printf("Pais: ");
-	scanf("%s", people[c].address.pais);
+	scanf("%s", people[c].address.country);
+
 	printf("\nAgora sobre o telefone \n");
+
 	printf("DDD: ");
 	scanf("%d", &people[c].phone.ddd);
 	printf("Numero: ");
 	scanf("%d", &people[c].phone.number);
+
 	printf("\nFinalmente, sobre o aniversario\n");
+
 	printf("Dia: ");
 	scanf("%d", &people[c].birthday.day);
 	printf("Mes: ");
 	scanf("%d", &people[c].birthday.month);
 	printf("Ano: ");
 	scanf("%d", &people[c].birthday.year);
-	printf("\nPessoa criada\n");
+
+	printf("\nRegistro criado com sucesso!\n");
 	
 	c++; // increase one to peopleCounter
 
@@ -128,8 +135,9 @@ void searchBdaysByDay(/* day, month */) {
 
 int main(void) {
 	int option = 1;
+  Person *registry;
 
-	while (option) {
+  while (option) {
 		printf("\n-----------------------\n");
 		printf(" MENU PRINCIPAL AGENDA\n");
 		printf("-----------------------\n\n");
@@ -141,7 +149,9 @@ int main(void) {
 		printf("Buscar aniversariantes do mes: (4) \n");
 		printf("Buscar aniversariantes do dia: (5) \n");
 		printf("Encerrar programa: (0) \n");
-		scanf("%d", &option);
+
+    printf("Sua opcao: ");
+    scanf("%d", &option);
 
 		switch (option) {
 			// shut the program down
