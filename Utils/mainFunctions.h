@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "input.h"
 #include "consts.h"
 
@@ -16,55 +17,49 @@ void insertPerson(Person *people, int c) {
 	system("cls");
 
 	if (c > 1)
-		people = realloc(people, c * sizeof(Person));
+		people = (Person*) realloc(people, (c * sizeof(Person)));
 	// If it is not the first insertion, memory has to be reallocated!
 
 
 	printf("Para inserir um novo registro, passe as seguintes informacoes: \n\n");
 
-
 	printf("Primeiro nome: ");
-	scanf("%s", &people[c - 1].firstName);
+	inputString(people[c - 1].firstName, 50);
 
 	printf("Sobrenome: ");
-	fflush(stdin);
 	inputString(people[c - 1].lastName, 50);
 
 	printf("e-mail: ");
-	scanf("%s", &people[c - 1].email);
+	inputString(people[c - 1].email, 50);
 
 
 	printf("\nSobre o endereco:\n");
 
 
 	printf("Rua: ");
-	fflush(stdin);
 	inputString(people[c - 1].address.street, 50);
 
 	printf("Numero: ");
 	scanf("%d", &people[c - 1].address.number);
+	fflush(stdin);
 
 	printf("Complemento: ");
-	fflush(stdin);
 	inputString(people[c - 1].address.comp, 50);
 
 	printf("Bairro: ");
-	fflush(stdin);
 	inputString(people[c - 1].address.district, 50);
 
 	printf("CEP: ");
 	scanf("%d", &people[c - 1].address.zipCode);
+	fflush(stdin);
 
 	printf("Cidade: ");
-	fflush(stdin);
 	inputString(people[c - 1].address.city, 50);
 
 	printf("Estado: ");
-	fflush(stdin);
 	inputString(people[c - 1].address.state, 50);
 
 	printf("Pais: ");
-	fflush(stdin);
 	inputString(people[c - 1].address.country, 50);
 
 
@@ -99,42 +94,28 @@ void insertPerson(Person *people, int c) {
 
 
 
-void printList(Person *list, int listSize) {
-	int i;
+void printPerson(Person person) {
 
-	system("cls");
+	printf("[Informacao base]\n\n");
 
-	printf("\n-----------------------\n");
-	printf("TODOS OS REGISTROS\n");
-	printf("-----------------------\n\n");
+	printf("Nome: %s\n", person.firstName);
+	printf("Sobrenome: %s\n", person.lastName);
+	printf("Email: %s\n\n", person.email);
 
-	for (i = 0; i < listSize; i++) {
-		printf("--------\n");
-		printf("INDEX %d\n", i);
-		printf("--------\n\n");
+	printf("[Endereco]\n\n");
 
-		printf("Informacao base\n\n");
-		printf("Nome: %s\n", list[i].firstName);
-		printf("Sobrenome: %s\n", list[i].lastName);
-		printf("Email: %s\n\n", list[i].email);
+	printf("Rua: %s\n", person.address.street);
+	printf("Numero: %d\n", person.address.number);
+	printf("Complemento: %s\n", person.address.comp);
+	printf("Bairro: %s\n", person.address.district);
+	printf("CEP: %d\n", person.address.zipCode);
+	printf("Cidade: %s\n", person.address.city);
+	printf("Estado: %s\n", person.address.state);
+	printf("Pais: %s\n\n", person.address.country);
 
-		printf("Endereco\n\n");
+	printf("Telefone: (%d) %d\n\n", person.phone.ddd, person.phone.number);
 
-		printf("Rua: %s\n", list[i].address.street);
-		printf("Numero: %d\n", list[i].address.number);
-		printf("Complemento: %s\n", list[i].address.comp);
-		printf("Bairro: %s\n", list[i].address.district);
-		printf("CEP: %d\n", list[i].address.zipCode);
-		printf("Cidade: %s\n", list[i].address.city);
-		printf("Estado: %s\n", list[i].address.state);
-		printf("Pais: %s\n\n", list[i].address.country);
-
-		printf("Telefone\n\n");
-
-		printf("Numero: (%d) %d\n\n", list[i].phone.ddd, list[i].phone.number);
-	}
-
-	printf("\nFim do registro.\n\n");
+	printf("Data de nascimento: %d/%d/%d\n", person.birthday.day, person.birthday.month, person.birthday.year);
 }
 
 
@@ -143,24 +124,56 @@ void printList(Person *list, int listSize) {
 // removePerson receives as argument the peopleArray as first argument, 
 // the id of the one who is about to be removed as second argument, 
 // and the peopleCounter to be updated as removing one as third argument
-int removePerson(/* peopleArray, person.id */ int c) {
-	// system("cls || clear");
-	int choice = 0;
-	printf("Deseja mesmo remover este registro?\n1 para 'Sim'\n0 para 'Nao'\n");
-	scanf("%d", &choice);
+// int removePerson(/* peopleArray, person.id */ int c) {
+// 	// system("cls || clear");
+// 	int choice = 0;
+// 	printf("Deseja mesmo remover este registro?\n1 para 'Sim'\n0 para 'Nao'\n");
+// 	scanf("%d", &choice);
 
-	if (choice == 1) {
-		printf("removendo pessoa, aguarde!\n");
-		c--; // decrease one to the peopleCounter, as it was removed one person
-	}	else if (choice == 0) {
-		printf("voltando ao menu...\n");
-	} else {
-		printf("valor invalido, retornando ao menu...\n");
+// 	if (choice == 1) {
+// 		printf("removendo pessoa, aguarde!\n");
+// 		c--; // decrease one to the peopleCounter, as it was removed one person
+// 	}	else if (choice == 0) {
+// 		printf("voltando ao menu...\n");
+// 	} else {
+// 		printf("valor invalido, retornando ao menu...\n");
+// 	}
+
+// 	return c; // returns counter updated
+// }
+
+
+
+void removePerson(Person *list, int listSize) {
+	char op;
+	int i, index;
+
+	system("cls");
+
+	do {
+		printf("Insira o indice da pessoa a ter seu registro removido: ");
+		scanf("%d", &index);
+		fflush(stdin);
+
+		if ((index < 0) || (index > (listSize - 1)))
+			printf("Index invalido! Tente novamente.\n");
+		
+	} while ((index < 0) || (index > (listSize - 1)));
+
+	printf("Informacao da pessoa que deseja remover: \n");
+	printPerson(list[index]);
+	printf("Tem certeza que deseja remover este registro? [s/n] ");
+	scanf("%c", &op);
+
+	if (toupper(op) == 'S') {
+		for (i = index; i < listSize - 2; i++) {
+			list[i] = list[i + 1];
+		}
+		list = realloc(list, (listSize - 1) * sizeof(Person));
+		printf("\nRegistro removido com sucesso.\n\n");
 	}
 
-	return c; // returns counter updated
 }
-
 
 
 

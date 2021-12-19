@@ -4,13 +4,13 @@
 #include "Utils/mainFunctions.h"
 
 int main(void) {
-	int option;
-	int listSize = 0;
-  Person *list = malloc(sizeof(Person));
-
-	system("cls");
+	int option, index;
+	int listSize = 0, i;
+  Person list[100];
 
   do {
+		system("cls");
+
 		printf("\n-----------------------\n");
 		printf("MENU PRINCIPAL AGENDA\n");
 		printf("-----------------------\n\n");
@@ -22,36 +22,45 @@ int main(void) {
 		printf("[4] Buscar registro por nome\n");
 		printf("[5] Buscar aniversariantes do mes\n");
 		printf("[6] Buscar aniversariantes do dia\n");
-		printf("[7] Encerrar programa\n");
+		printf("[0] Encerrar programa\n");
 
     printf("Sua opcao: ");
     scanf("%d", &option);
 
+		system("cls");
+
 		switch (option) {
-			case 0:
+			case 0: // Encerrar programa
 				printf("Encerrando, ate a proxima!");
 				break;
 
-			case 1:
+			case 1: // Inserir novo registro
 				listSize++;
 				insertPerson(list, listSize);
+				system("pause");
 				break;
 
-			case 2:
-				printList(list, listSize);
-				break;
+			case 2: // Listar todos os registros
 
-			// call the function removePerson to remove one registry passing unique id as argument
-			case 3:
-				// system("cls || clear");
-				printf("Insira o nome da pessoa a ter seu registro removido: ");
-				scanf("");
-				if (/* person exists */ 1==1) {
-					// removePerson(/* person.id */ int c);
-				} else {
-					printf("Pessoa nao encontrada, retornando ao menu\n");
-					break;
+				printf("\n-----------------------\n");
+				printf("TODOS OS REGISTROS\n");
+				printf("-----------------------\n\n");
+
+				for (i = 0; i < listSize; i++) {
+					printf("--------\n");
+					printf("INDEX %d\n", i);
+					printf("--------\n\n");
+					printPerson(list[i]);
 				}
+
+				printf("\nFim do registro.\n\n");
+				system("pause");
+				break;
+
+			case 3: // Remover registro
+				listSize--;
+				removePerson(list, listSize);
+				system("pause");
 				break;
 
 			// call the function searchPersonByName to list all persons
@@ -108,10 +117,10 @@ int main(void) {
 
 			default:
 				printf("Valor invalido, tente novamente!\n");
+				system("pause");
+				break;
 		}
 	} while (option != 0);
-
-	free(list);
 
   return 0;
 }

@@ -20,7 +20,7 @@ typedef struct {
 typedef struct {
   char firstName[50];
   char lastName[50];
-  char email[100];
+  char email[50];
 	int id;
 	Birthday birthday;
 	Address address;

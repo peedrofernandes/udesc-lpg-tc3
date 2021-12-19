@@ -6,6 +6,8 @@
 #include <string.h>
 
 void inputString(char *string, int max) {
+  fflush(stdin);
+
   int i = 0;
 
   fgets(string, max, stdin);
