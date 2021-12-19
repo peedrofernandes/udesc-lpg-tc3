@@ -6,13 +6,13 @@
 int main(void) {
 	int option, index;
 	int listSize = 0, i;
-  Person list[100];
+  Person list[5];
 
   do {
 		system("cls");
 
 		printf("\n-----------------------\n");
-		printf("MENU PRINCIPAL AGENDA\n");
+		printf(" MENU PRINCIPAL AGENDA\n");
 		printf("-----------------------\n\n");
 		printf("QUAL OPCAO DESEJA SEGUIR: \n\n");
 		
@@ -42,9 +42,9 @@ int main(void) {
 
 			case 2: // Listar todos os registros
 
-				printf("\n-----------------------\n");
-				printf("TODOS OS REGISTROS\n");
-				printf("-----------------------\n\n");
+				printf("\n------------------------\n");
+				printf("   TODOS OS REGISTROS\n");
+				printf("------------------------\n\n");
 
 				for (i = 0; i < listSize; i++) {
 					printf("--------\n");
@@ -58,8 +58,8 @@ int main(void) {
 				break;
 
 			case 3: // Remover registro
-				listSize--;
 				removePerson(list, listSize);
+				listSize--;
 				system("pause");
 				break;
 

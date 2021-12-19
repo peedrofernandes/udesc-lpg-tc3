@@ -16,14 +16,14 @@
 void insertPerson(Person *people, int c) {
 	system("cls");
 
-	if (c > 1)
-		people = (Person*) realloc(people, (c * sizeof(Person)));
-	// If it is not the first insertion, memory has to be reallocated!
+	// if (c > 1)
+	// 	people = (Person*) realloc(people, (c * sizeof(Person)));
+	// // If it is not the first insertion, memory has to be reallocated!
 
 
 	printf("Para inserir um novo registro, passe as seguintes informacoes: \n\n");
 
-	printf("Primeiro nome: ");
+	// printf("Primeiro nome: ");
 	inputString(people[c - 1].firstName, 50);
 
 	printf("Sobrenome: ");
@@ -166,10 +166,10 @@ void removePerson(Person *list, int listSize) {
 	scanf("%c", &op);
 
 	if (toupper(op) == 'S') {
-		for (i = index; i < listSize - 2; i++) {
+		for (i = index; i < listSize - 1; i++) {
 			list[i] = list[i + 1];
 		}
-		list = realloc(list, (listSize - 1) * sizeof(Person));
+		list = realloc(list, ((listSize - 1) * sizeof(Person)));
 		printf("\nRegistro removido com sucesso.\n\n");
 	}
 
