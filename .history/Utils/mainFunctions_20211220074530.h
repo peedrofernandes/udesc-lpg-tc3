@@ -265,5 +265,4 @@ Person filterPersonByExactDay(int *size, int month, int day, Person *people) {
 
 	return *filteredPeople;
 }
-
 #endif

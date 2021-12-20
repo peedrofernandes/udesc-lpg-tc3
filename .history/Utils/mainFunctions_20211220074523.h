@@ -218,9 +218,6 @@ Person filterPersonByName(int *size, char *name, Person *people) {
 	return *filteredPeople;
 }
 
-
-
-
 Person filterPersonByMonth(int *size, int month, Person *people) {
 	Person filteredPeople[*size];
 	int counter = 0;
@@ -242,9 +239,6 @@ Person filterPersonByMonth(int *size, int month, Person *people) {
 	return *filteredPeople;
 }
 
-
-
-
 Person filterPersonByExactDay(int *size, int month, int day, Person *people) {
 	Person filteredPeople[*size];
 	int counter = 0;
@@ -265,5 +259,4 @@ Person filterPersonByExactDay(int *size, int month, int day, Person *people) {
 
 	return *filteredPeople;
 }
-
 #endif
