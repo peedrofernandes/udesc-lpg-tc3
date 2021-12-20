@@ -8,6 +8,7 @@ int main(void) {
 	int option, index;
 	int listSize = 0, i;
   Person list[100];
+  int *listSizePtr = listSize;
 
   do {
     system("cls");
@@ -17,7 +18,7 @@ int main(void) {
 		printf("-----------------------\n\n");
 		printf("QUAL OPCAO DESEJA SEGUIR: \n\n");
 		
-		printf("[1] Inserir um novo registro (maximo de 100 registros!)\n");
+		printf("[1] Inserir um novo registro (maximo de 100 registros!):\n");
 		printf("[2] Mostrar todos os registros\n");
 		printf("[3] Remover um registro\n");
 		printf("[4] Buscar registro por nome\n");
@@ -71,7 +72,7 @@ int main(void) {
           printf("Nao ha registro nenhum para remover!\n\n");
           system("pause");
         } else {
-          removePerson(list, &listSize);
+          removePerson(list, *listSize);
           break;  
         }
 

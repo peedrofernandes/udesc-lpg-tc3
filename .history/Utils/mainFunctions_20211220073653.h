@@ -18,17 +18,17 @@ void insertPerson(Person *people, int listSize) {
 
 	printf("Para inserir um novo registro, passe as seguintes informacoes: \n\n");
 
-	printf("Primeiro nome: ");
+	// printf("Primeiro nome: ");
 	inputString(people[listSize - 1].firstName, 50);
 
-	printf("Sobrenome: ");
+	// printf("Sobrenome: ");
 	inputString(people[listSize - 1].lastName, 50);
 
-	printf("e-mail: ");
+	// printf("e-mail: ");
 	inputString(people[listSize - 1].email, 50);
 
 
-	printf("\nSobre o endereco:\n");
+	// printf("\nSobre o endereco:\n");
 
 
 	printf("Rua: ");

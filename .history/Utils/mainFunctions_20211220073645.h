@@ -18,47 +18,47 @@ void insertPerson(Person *people, int listSize) {
 
 	printf("Para inserir um novo registro, passe as seguintes informacoes: \n\n");
 
-	printf("Primeiro nome: ");
+	// printf("Primeiro nome: ");
 	inputString(people[listSize - 1].firstName, 50);
 
-	printf("Sobrenome: ");
+	// printf("Sobrenome: ");
 	inputString(people[listSize - 1].lastName, 50);
 
-	printf("e-mail: ");
+	// printf("e-mail: ");
 	inputString(people[listSize - 1].email, 50);
 
 
-	printf("\nSobre o endereco:\n");
+	// printf("\nSobre o endereco:\n");
 
 
-	printf("Rua: ");
+	// printf("Rua: ");
 	inputString(people[listSize - 1].address.street, 50);
 
-	printf("Numero: ");
+	// printf("Numero: ");
 	scanf("%d", &people[listSize - 1].address.number);
 	fflush(stdin);
 
-	printf("Complemento: ");
+	// printf("Complemento: ");
 	inputString(people[listSize - 1].address.comp, 50);
 
-	printf("Bairro: ");
+	// printf("Bairro: ");
 	inputString(people[listSize - 1].address.district, 50);
 
-	printf("CEP: ");
+	// printf("CEP: ");
 	scanf("%d", &people[listSize - 1].address.zipCode);
 	fflush(stdin);
 
-	printf("Cidade: ");
+	// printf("Cidade: ");
 	inputString(people[listSize - 1].address.city, 50);
 
-	printf("Estado: ");
+	// printf("Estado: ");
 	inputString(people[listSize - 1].address.state, 50);
 
-	printf("Pais: ");
+	// printf("Pais: ");
 	inputString(people[listSize - 1].address.country, 50);
 
 
-	printf("\nAgora sobre o telefone:\n");
+	// printf("\nAgora sobre o telefone:\n");
 
 
 	printf("DDD: ");

@@ -17,7 +17,7 @@ int main(void) {
 		printf("-----------------------\n\n");
 		printf("QUAL OPCAO DESEJA SEGUIR: \n\n");
 		
-		printf("[1] Inserir um novo registro (maximo de 100 registros!)\n");
+		printf("[1] Inserir um novo registro (maximo de 100 registros!):\n");
 		printf("[2] Mostrar todos os registros\n");
 		printf("[3] Remover um registro\n");
 		printf("[4] Buscar registro por nome\n");
