@@ -16,6 +16,10 @@
 void insertPerson(Person *people, int listSize) {
 	system("cls");
 
+	people = realloc(people, (listSize * ((int) sizeof(Person))));
+	// Memory has to be reallocated!
+
+
 	printf("Para inserir um novo registro, passe as seguintes informacoes: \n\n");
 
 	// printf("Primeiro nome: ");
@@ -115,8 +119,32 @@ void printPerson(Person person) {
 
 
 
+
+// removePerson receives as argument the peopleArray as first argument, 
+// the id of the one who is about to be removed as second argument, 
+// and the peopleCounter to be updated as removing one as third argument
+// int removePerson(/* peopleArray, person.id */ int c) {
+// 	// system("cls || clear");
+// 	int choice = 0;
+// 	printf("Deseja mesmo remover este registro?\n1 para 'Sim'\n0 para 'Nao'\n");
+// 	scanf("%d", &choice);
+
+// 	if (choice == 1) {
+// 		printf("removendo pessoa, aguarde!\n");
+// 		c--; // decrease one to the peopleCounter, as it was removed one person
+// 	}	else if (choice == 0) {
+// 		printf("voltando ao menu...\n");
+// 	} else {
+// 		printf("valor invalido, retornando ao menu...\n");
+// 	}
+
+// 	return c; // returns counter updated
+// }
+
+
+
 void removePerson(Person *list, int listSize) {
-	char op, op2;
+	char op;
 	int i, index;
 
 	system("cls");
@@ -128,47 +156,23 @@ void removePerson(Person *list, int listSize) {
 
 		if ((index < 0) || (index > (listSize - 1))) {
       system("cls");
-      printf("Indice invalido! Tente novamente.\n");
+      printf("Index invalido! Tente novamente.\n");
     }
 		
 	} while ((index < 0) || (index > (listSize - 1)));
 
 	printf("Informacao da pessoa que deseja remover: \n");
 	printPerson(list[index]);
+	printf("Tem certeza que deseja remover este registro? [s/n] ");
+	scanf("%c", &op);
 
-  do {
-	  printf("Tem certeza que deseja remover este registro? [s/n] ");
-	  scanf("%c", &op);
-    fflush(stdin);
-    if ((toupper(op) != 'S') && (toupper(op) != 'N')) {
-      system("cls");
-      printf("Opcao invalida, tente novamente!\n");
-    }
-  } while ((toupper(op) != 'S') && (toupper(op) != 'N'));
-
-  if (toupper(op) == 'S') {
-
-		for (i = index; i < listSize - 1; i++)
+	if (toupper(op) == 'S') {
+		for (i = index; i < listSize - 1; i++) {
 			list[i] = list[i + 1];
+		}
+		list = realloc(list, ((listSize - 1) * sizeof(Person)));
 		printf("\nRegistro removido com sucesso.\n\n");
-    system("pause");
-
-  } else if (toupper(op) == 'N') {
-
-    do {
-      system("cls");
-      printf("Deseja voltar ao menu inicial? [s/n] ");
-      scanf("%c", &op2);
-      fflush(stdin);
-      if ((toupper(op2) != 'S') && (toupper(op2) != 'N')) {
-        printf("Opcao invalida, tente novamente!\n");
-        system("pause");
-      }
-    } while ((toupper(op2) != 'S') && (toupper(op2) != 'N'));
-    if (toupper(op2) == 'N') {
-      removePerson(list, listSize);
-    }
-  }
+	}
 
 }
 

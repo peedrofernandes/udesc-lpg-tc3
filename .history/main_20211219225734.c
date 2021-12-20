@@ -2,12 +2,13 @@
 #include <string.h>
 #include "Utils/input.h"
 #include "Utils/mainFunctions.h"
-#include "Utils/consts.h"
 
 int main(void) {
 	int option, index;
 	int listSize = 0, i;
-  Person list[100];
+  Person *list;
+
+  list = malloc(sizeof(Person);
 
   do {
     system("cls");
@@ -17,7 +18,7 @@ int main(void) {
 		printf("-----------------------\n\n");
 		printf("QUAL OPCAO DESEJA SEGUIR: \n\n");
 		
-		printf("[1] Inserir um novo registro (maximo de 100 registros!):\n");
+		printf("[1] Inserir um novo registro:\n");
 		printf("[2] Mostrar todos os registros\n");
 		printf("[3] Remover um registro\n");
 		printf("[4] Buscar registro por nome\n");
@@ -43,38 +44,26 @@ int main(void) {
 
 			case 2: // Listar todos os registros
 
-        if (listSize == 0) {
-          printf("Nao ha registro nenhum para mostrar!\n\n");
-          system("pause");
+				printf("\n------------------------\n");
+				printf("   TODOS OS REGISTROS\n");
+				printf("------------------------\n\n");
 
-        } else {  
+				for (i = 0; i < listSize; i++) {
+					printf("--------\n");
+					printf("INDEX %d\n", i);
+					printf("--------\n\n");
+					printPerson(list[i]);
+				}
 
-          printf("\n------------------------\n");
-          printf("   TODOS OS REGISTROS\n");
-          printf("------------------------\n\n");
-
-          for (i = 0; i < listSize; i++) {
-            printf("--------\n");
-            printf("INDEX %d\n", i);
-            printf("--------\n\n");
-            printPerson(list[i]);
-          }
-
-          printf("\nFim do registro.\n\n");
-          system("pause");
-        }
-
+				printf("\nFim do registro.\n\n");
+				system("pause");
 				break;
 
 			case 3: // Remover registro
-        if (listSize <= 0) {
-          printf("Nao ha registro nenhum para remover!\n\n");
-          system("pause");
-        } else {
-          removePerson(list, listSize);
-          listSize--;
-          break;  
-        }
+				removePerson(list, listSize);
+				listSize--;
+				system("pause");
+				break;
 
 			// call the function searchPersonByName to list all persons
 			// with the name passed as argument
@@ -131,10 +120,10 @@ int main(void) {
 			default:
 				printf("Valor invalido, tente novamente!\n");
 				system("pause");
-        fflush(stdin);
-        break;
+				break;
 		}
-  } while (option != 0);
+  }
+  while (option != 0);
 
   return 0;
 }

@@ -46,9 +46,7 @@ int main(void) {
         if (listSize == 0) {
           printf("Nao ha registro nenhum para mostrar!\n\n");
           system("pause");
-
         } else {  
-
           printf("\n------------------------\n");
           printf("   TODOS OS REGISTROS\n");
           printf("------------------------\n\n");
@@ -60,21 +58,16 @@ int main(void) {
             printPerson(list[i]);
           }
 
-          printf("\nFim do registro.\n\n");
-          system("pause");
+				printf("\nFim do registro.\n\n");
+				system("pause");
         }
-
 				break;
 
 			case 3: // Remover registro
-        if (listSize <= 0) {
-          printf("Nao ha registro nenhum para remover!\n\n");
-          system("pause");
-        } else {
-          removePerson(list, listSize);
-          listSize--;
-          break;  
-        }
+				removePerson(list, listSize);
+				listSize--;
+				system("pause");
+				break;
 
 			// call the function searchPersonByName to list all persons
 			// with the name passed as argument

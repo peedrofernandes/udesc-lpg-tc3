@@ -67,13 +67,13 @@ int main(void) {
 				break;
 
 			case 3: // Remover registro
-        if (listSize <= 0) {
-          printf("Nao ha registro nenhum para remover!\n\n");
-          system("pause");
-        } else {
-          removePerson(list, listSize);
-          listSize--;
-          break;  
+        if (listSize <= 0)
+          printf("Nao ha registro nenhum para remover!\n");
+        else {
+        removePerson(list, listSize);
+				listSize--;
+				system("pause");
+				break;
         }
 
 			// call the function searchPersonByName to list all persons

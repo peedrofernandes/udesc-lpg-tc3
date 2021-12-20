@@ -68,11 +68,12 @@ int main(void) {
 
 			case 3: // Remover registro
         if (listSize <= 0) {
-          printf("Nao ha registro nenhum para remover!\n\n");
+          printf("Nao ha registro nenhum para remover!\n");
           system("pause");
         } else {
           removePerson(list, listSize);
           listSize--;
+          system("pause");
           break;  
         }
 

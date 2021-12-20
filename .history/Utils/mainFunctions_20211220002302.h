@@ -158,14 +158,14 @@ void removePerson(Person *list, int listSize) {
     do {
       system("cls");
       printf("Deseja voltar ao menu inicial? [s/n] ");
-      scanf("%c", &op2);
+      scanf("%c", &op);
       fflush(stdin);
-      if ((toupper(op2) != 'S') && (toupper(op2) != 'N')) {
+      if ((toupper(op) != 'S') && (toupper(op) != 'N')) {
         printf("Opcao invalida, tente novamente!\n");
         system("pause");
       }
-    } while ((toupper(op2) != 'S') && (toupper(op2) != 'N'));
-    if (toupper(op2) == 'N') {
+    } while ((toupper(op) != 'S') && (toupper(op) != 'N'));
+    if (toupper(op) == 'N') {
       removePerson(list, listSize);
     }
   }

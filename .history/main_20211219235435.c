@@ -73,6 +73,7 @@ int main(void) {
         } else {
           removePerson(list, listSize);
           listSize--;
+          system("pause");
           break;  
         }
 
