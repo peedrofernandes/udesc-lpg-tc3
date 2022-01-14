@@ -34,7 +34,7 @@ void insertPerson(Person *people, int listSize) {
 
 	printf("Numero: ");
 	scanf("%d", &people[listSize - 1].address.number);
-	clearBuffer();
+	fflush(stdin);
 
 	printf("Complemento: ");
 	inputString(people[listSize - 1].address.comp, 50);
@@ -44,7 +44,7 @@ void insertPerson(Person *people, int listSize) {
 
 	printf("CEP: ");
 	scanf("%d", &people[listSize - 1].address.zipCode);
-	clearBuffer();
+	fflush(stdin);
 
 	printf("Cidade: ");
 	inputString(people[listSize - 1].address.city, 50);
@@ -122,7 +122,7 @@ void removePerson(Person *list, int *listSize) {
 	do {
 		printf("Insira o indice da pessoa a ter seu registro removido: ");
 		scanf("%d", &index);
-		clearBuffer();
+		fflush(stdin);
 
 		if ((index < 0) || (index > (*listSize - 1))) {
       system("cls");
@@ -137,7 +137,7 @@ void removePerson(Person *list, int *listSize) {
   do {
 	  printf("Tem certeza que deseja remover este registro? [s/n] ");
 	  scanf("%c", &op);
-    clearBuffer();
+    fflush(stdin);
     if ((toupper(op) != 'S') && (toupper(op) != 'N')) {
       system("cls");
       printf("Opcao invalida, tente novamente!\n");
@@ -158,7 +158,7 @@ void removePerson(Person *list, int *listSize) {
       system("cls");
       printf("Deseja voltar ao menu inicial? [s/n] ");
       scanf("%c", &op2);
-      clearBuffer();
+      fflush(stdin);
       if ((toupper(op2) != 'S') && (toupper(op2) != 'N')) {
         printf("Opcao invalida, tente novamente!\n");
         system("pause");

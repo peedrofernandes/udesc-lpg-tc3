@@ -130,7 +130,7 @@ int main(void) {
 			default:
 				printf("Valor invalido, tente novamente!\n");
 				system("pause");
-        clearBuffer();
+        fflush(stdin);
         break;
 		}
   } while (option != 0);
