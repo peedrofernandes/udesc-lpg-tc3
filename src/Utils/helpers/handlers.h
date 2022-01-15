@@ -5,8 +5,14 @@
 #include <stdlib.h>
 #include <string.h>
 
+void clearBuffer(void) {
+  char c = getchar();
+  while ((c != '\n') && (c != EOF))
+    c = getchar();
+}
+
 void inputString(char *string, int max) {
-  fflush(stdin);
+  clearBuffer();
 
   long long unsigned int i = 0;
 
@@ -19,12 +25,6 @@ void inputString(char *string, int max) {
     }
     i++;
   } while (i < strlen(string));
-}
-
-void clearBuffer(void) {
-  char c = getchar();
-  while ((c != '\n') && (c != EOF))
-    c = getchar();
 }
 
   #ifdef WIN32
