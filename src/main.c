@@ -3,7 +3,7 @@
 #include "Utils/constants/consts.h"
 #include "Utils/helpers/addPerson.h"
 #include "Utils/helpers/filters.h"
-#include "Utils/helpers/input.h"
+#include "Utils/helpers/handlers.h"
 #include "Utils/helpers/mainFunctions.h"
 #include "Utils/helpers/print.h"
 #include "Utils/helpers/upperString.h"
@@ -15,7 +15,7 @@ int main(void) {
 	int monthToBeSearched = 0, dayToBeSearched = 0;
 
   do {
-    system("cls");
+    clearScreen();
 
 		printf("\n-----------------------\n");
 		printf(" MENU PRINCIPAL AGENDA\n");
@@ -33,7 +33,7 @@ int main(void) {
     printf("Sua opcao: ");
     scanf("%d", &option);
 
-		system("cls");
+		clearScreen();
 
 		switch (option) {
 			case 0:
@@ -47,7 +47,7 @@ int main(void) {
         Person person;
         person = createPerson();
 				insertPerson(person, list, &listSize);
-				system("pause");
+				systemPause();
 				break;
 
 			case 2:
@@ -55,7 +55,7 @@ int main(void) {
 
         if (listSize == 0) {
           printf("Nao ha registro nenhum para mostrar!\n\n");
-          system("pause");
+          systemPause();
 
         } else {  
 
@@ -71,7 +71,7 @@ int main(void) {
           }
 
           printf("\nFim do registro.\n\n");
-          system("pause");
+          systemPause();
         }
 
 				break;
@@ -80,7 +80,7 @@ int main(void) {
         // Remover registro
         if (listSize <= 0) {
           printf("Nao ha registro nenhum para remover!\n\n");
-          system("pause");
+          systemPause();
         } else {
           removePerson(list, &listSize);
           break;  
@@ -92,7 +92,7 @@ int main(void) {
 				char nameToBeSearched[50];
 				scanf("%s", nameToBeSearched);
 				searchPersonByName(listSize, nameToBeSearched, list);
-        system("pause");
+        systemPause();
 
 				break;
 
@@ -102,7 +102,7 @@ int main(void) {
 				scanf("%d", &monthToBeSearched);
 				if (monthToBeSearched >= 1 && monthToBeSearched <= 12) {
 					searchPersonByMonth(listSize, monthToBeSearched, list);
-          system("pause");
+          systemPause();
           
 				} else {
 					printf("Mes invalido, retornando ao menu\n");
@@ -119,7 +119,7 @@ int main(void) {
 				scanf("%d", &dayToBeSearched);
 				if (monthToBeSearched >= 1 && monthToBeSearched <= 12 && dayToBeSearched >= 1 && dayToBeSearched <= 31) {
 					searchPersonByExactDay(listSize, monthToBeSearched, dayToBeSearched, list);
-          system("pause");
+          systemPause();
 				} else {
 					printf("Data invalida, retornando ao menu\n");
 					break;
@@ -129,7 +129,7 @@ int main(void) {
 			default:
 				// Loop para uma das opcoes serem acessadas
         printf("Valor invalido, tente novamente!\n");
-				system("pause");
+				systemPause();
         clearBuffer();
         break;
 		}

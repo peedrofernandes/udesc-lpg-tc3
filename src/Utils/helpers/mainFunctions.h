@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
-#include "input.h"
+#include "handlers.h"
 #include "print.h"
 #include "../constants/consts.h"
 
@@ -12,7 +12,7 @@ void removePerson(Person *list, int *listSize) {
 	char op, op2;
 	int i, index;
 
-	system("cls");
+	clearScreen();
 
 	do {
 		printf("Insira o indice da pessoa a ter seu registro removido: ");
@@ -20,7 +20,7 @@ void removePerson(Person *list, int *listSize) {
 		clearBuffer();
 
 		if ((index < 0) || (index > (*listSize - 1))) {
-      system("cls");
+      clearScreen();
       printf("Indice invalido! Tente novamente.\n");
     }
 		
@@ -34,7 +34,7 @@ void removePerson(Person *list, int *listSize) {
 	  scanf("%c", &op);
     clearBuffer();
     if ((toupper(op) != 'S') && (toupper(op) != 'N')) {
-      system("cls");
+      clearScreen();
       printf("Opcao invalida, tente novamente!\n");
     }
   } while ((toupper(op) != 'S') && (toupper(op) != 'N'));
@@ -45,18 +45,18 @@ void removePerson(Person *list, int *listSize) {
 			list[i] = list[i + 1];
 		printf("\nRegistro removido com sucesso.\n\n");
     *listSize -= 1;
-    system("pause");
+    systemPause();
 
   } else if (toupper(op) == 'N') {
 
     do {
-      system("cls");
+      clearScreen();
       printf("Deseja voltar ao menu inicial? [s/n] ");
       scanf("%c", &op2);
       clearBuffer();
       if ((toupper(op2) != 'S') && (toupper(op2) != 'N')) {
         printf("Opcao invalida, tente novamente!\n");
-        system("pause");
+        systemPause();
       }
     } while ((toupper(op2) != 'S') && (toupper(op2) != 'N'));
 

@@ -4,12 +4,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "../constants/consts.h"
-#include "input.h"
+#include "handlers.h"
 
 Person createPerson() {
 	Person person;
 
-  system("cls");
+  clearScreen();
 	printf("Para inserir um novo registro, passe as seguintes informacoes: \n\n");
 
 	printf("Primeiro nome: ");
@@ -56,7 +56,7 @@ Person createPerson() {
 	printf("Ano: ");
 	scanf("%d", &person.birthday.year);
 
-	system("cls");
+	clearScreen();
 	
 	return person;
 }

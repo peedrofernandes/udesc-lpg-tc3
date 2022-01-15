@@ -1,5 +1,5 @@
-#ifndef _OTHER_H
-#define _OTHER_H
+#ifndef _HANDLERS_H
+#define _HANDLERS_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -26,5 +26,27 @@ void clearBuffer(void) {
   while ((c != '\n') && (c != EOF))
     c = getchar();
 }
+
+  #ifdef WIN32
+    
+    void clearScreen(void) {
+      system("cls");
+    }
+
+    void systemPause(void) {
+      system("pause");
+    }
+
+  #else
+
+    void clearScreen(void) {
+      system("clear");
+    }
+
+    void systemPause(void) {
+      system("read -p \"Pressione qualquer tecla para continuar...\"");
+    }
+
+  #endif
 
 #endif
