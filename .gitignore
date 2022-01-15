@@ -1,5 +1,5 @@
 .history/
 *.exe
 *.txt
-.replit
+.replit/
 .vscode/
