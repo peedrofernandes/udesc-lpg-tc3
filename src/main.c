@@ -83,10 +83,10 @@ int main(void) {
           systemPause();
         } else {
           removePerson(list, &listSize);
-          break;  
         }
+        break;
 
-			case 4:
+      case 4:
 			  // Lista registros com o nome correspondente
 				printf("Insira o nome que deseja buscar nos registros: \n");
 				char nameToBeSearched[50];
