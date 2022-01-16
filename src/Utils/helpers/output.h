@@ -1,8 +1,9 @@
-#ifndef _PRINT_H
-#define _PRINT_H
+#ifndef _OUTPUT_H
+#define _OUTPUT_H
 
 #include <stdio.h>
 #include "../constants/consts.h"
+#include "support.h"
 
 int printMainMenu() {
   int option;
