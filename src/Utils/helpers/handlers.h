@@ -10,6 +10,12 @@ void clearBuffer(void) {
   while ((c = getchar()) != '\n' && c != EOF);
 }
 
+void systemPause(void) {
+  clearBuffer();
+  printf("Pressione enter para continuar...");
+  getchar();
+}
+
 void inputString(char *string, int max) {
   long unsigned int i = 0;
 
@@ -31,18 +37,10 @@ void inputString(char *string, int max) {
       system("cls");
     }
 
-    void systemPause(void) {
-      system("pause");
-    }
-
   #else
 
     void clearScreen(void) {
       system("clear");
-    }
-
-    void systemPause(void) {
-      system("read -p \"Pressione qualquer tecla para continuar...\"");
     }
 
   #endif
