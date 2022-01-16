@@ -4,6 +4,51 @@
 #include <stdio.h>
 #include "../constants/consts.h"
 
+int printMainMenu() {
+  int option;
+
+  clearScreen();
+
+  printf("\n-----------------------\n");
+  printf(" MENU PRINCIPAL AGENDA\n");
+  printf("-----------------------\n\n");
+  printf("QUAL OPCAO DESEJA SEGUIR: \n\n");
+
+  printf("[1] Inserir um novo registro (maximo de 100 registros!);\n");
+  printf("[2] Mostrar todos os registros;\n");
+  printf("[3] Remover um registro;\n");
+  printf("[4] Buscar registro por nome;\n");
+  printf("[5] Buscar aniversariantes do mes;\n");
+  printf("[6] Buscar aniversariantes do dia;\n");
+  printf("[0] Encerrar programa.\n");
+
+  printf("Sua opcao: ");
+  scanf("%d", &option);
+
+  clearScreen();
+
+  return option;
+}
+
+int printReducedMenu() {
+  int option;
+
+  printf("\n-----------------------\n");
+  printf(" MENU PRINCIPAL AGENDA\n");
+  printf("-----------------------\n\n");
+  printf("QUAL OPCAO DESEJA SEGUIR: \n\n");
+
+  printf("[1] Inserir um novo registro;\n");
+  printf("[0] Encerrar programa.\n");
+
+  printf("Sua opcao: ");
+  scanf("%d", &option);
+
+  clearScreen();
+
+  return option;
+}
+
 void printPerson(Person person) {
 
 	printf("[Informacao base]\n\n");
