@@ -10,7 +10,9 @@ Person createPerson() {
 	Person person;
 
   clearScreen();
-	printf("Para inserir um novo registro, passe as seguintes informacoes: \n\n");
+  clearBuffer();
+
+  printf("Para inserir um novo registro, passe as seguintes informacoes: \n\n");
 
 	printf("Primeiro nome: ");
 	inputString(person.firstName, 50);

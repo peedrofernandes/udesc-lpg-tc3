@@ -6,15 +6,12 @@
 #include <string.h>
 
 void clearBuffer(void) {
-  char c = getchar();
-  while ((c != '\n') && (c != EOF))
-    c = getchar();
+  char c;
+  while ((c = getchar()) != '\n' && c != EOF);
 }
 
 void inputString(char *string, int max) {
-  clearBuffer();
-
-  long long unsigned int i = 0;
+  long unsigned int i = 0;
 
   fgets(string, max, stdin);
 
@@ -25,6 +22,7 @@ void inputString(char *string, int max) {
     }
     i++;
   } while (i < strlen(string));
+
 }
 
   #ifdef WIN32
