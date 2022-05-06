@@ -18,7 +18,6 @@ int main(void) {
   Person list[100];
 
   do {
-
     clearScreen();
 
     if (listSize == 0)
