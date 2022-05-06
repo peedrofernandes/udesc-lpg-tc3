@@ -1,6 +1,6 @@
 # UDESC-LPG-TC3
 
-Este programa foi desenvolvido durante a disciplina de Linguagem de Programação, no curso de Ciência da Computação na UDESC (2021/2) por [Pedro Fernandes](https://github.com/peedrofernandes).
+Este programa foi desenvolvido durante a disciplina de Linguagem de Programação, no curso de Ciência da Computação na UDESC (2021/2) por [Pedro Fernandes](https://github.com/peedrofernandes) e [Vinícios Bidin](https://github.com/bidinpithecus).
 
 ## Resumo
 
